@@ -1,0 +1,114 @@
+html{
+    scroll-behavior: smooth;/*sayfa içi bağlantılarda yumuşak kaydırma*/
+}
+body{
+    background: aliceblue;  /*arka plan renk değiştirme*/
+    color: black; /* yazı rengi değiştirme*/
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+}
+
+/*Vertical*/
+.dikey-menu{
+    width: 20%;
+    background: aliceblue;
+    border-right: black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+.baslik{
+    padding: 10px;
+    margin: auto;
+    font-size: 25px;
+}
+.baslik a{
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+.dikey-menu ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dikey-menu li a{
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+.dikey-menu li a:hover{
+    background-color: black;
+    color: aliceblue;
+}
+
+
+
+
+
+/*List*/
+.container{
+    width: 80%; /*Genişlik*/
+    margin: 2rem auto; /*boşluk ve ortalama*/
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background: aliceblue;
+    color: black;
+    max-width: 600px;
+}
+#frmTodos{
+    width: 100%;
+}
+
+h1 {
+    margin:0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#text{
+    width: 88%;
+    border-radius: 5px;
+    padding: .5rem;
+}
+#btn{
+    border-radius: 5px;
+    width: 7%;
+    margin-right: auto;
+    padding: .5rem;
+}
+#todos> div{
+    margin: 1rem 0;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+#todos> div> button{
+    margin-left: auto;
+}
+#todos>div>input{
+    width: 1rem;
+    height: 1rem;
+    margin-right: .5rem;
+}
+.done {
+    text-decoration: line-through; /* üstünü çiz */
+    color: gray;                   /* rengi gri yap */
+}
+
+
+
+
+
+
+
+
+
+
