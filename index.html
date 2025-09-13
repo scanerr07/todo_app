@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <!--Türkçe özel karakterleri desteklemek için -->
+    <meta charset="UTF-8">
+    <!-- arama motorunda arama yapıldığında siteyi belli etmek için -->
+    <meta name="description" content="To Do List">
+    <!--Sitenin açıldığı cihaza göre ekranını ölçeklendirmek için -->
+    <meta name="viewport" content="width=device-width, initial-scale =1.0">
+    <!-- <meta http-equiv="refresh" content="5"> // sayfa yenileme sıklığı belirlemek için -->
+    <!--Sitenin başlığını değiştirmek için -->
+    <title>To Do List</title>
+    <!--CSS dosyasını bağlamak için -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<!-- Dikey Menü Vertical -->
+    <nav class="dikey-menu">
+        <div class="baslik">
+            <h2><a class="navbar-brand" href="#">To Do List</a></h2>
+        </div>
+        <ul>
+            <li><a href="frontend.html"><i class="fa-solid fa-list"></i> MY LIST</a></li>
+            <li><a href="calender.html"><i class="fa-solid fa-calendar"></i> CALENDAR</a></li>
+            <li><a href="Completed.html"><i class="fa-solid fa-check"></i> COMPLETED</a></li>
+        </ul>
+    </nav>
+
+
+<!-- Görev Ekleme ve Listeleme -->
+    <section id="list">
+        <div class="container">
+            <h1>Listem</h1>
+            <form id="frmTodos">
+                <input id="text" type="text" placeholder="Yeni Görev" required>
+                <button id="btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+            </form>
+            <div id="todos">
+            </div>
+        </div>
+    </section>
+
+
+    <script src = "frontend.js"></script>    <!-- java script kodu eklemek için kullanılır-->
+</body>
+</html>
