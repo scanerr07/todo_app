@@ -1,1 +1,1 @@
-Bu bizim backend frontend ve github öğrenmek için yaptığımız bir proje
+This is our first project for learning backend and frontend
