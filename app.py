@@ -28,6 +28,36 @@ def get_todos():
     return jsonify({'todos': output})
 
 
+from flask import Flask, jsonify, request
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+# Veritabanı bağlantı ayarları
+# 'mssql+pyodbc://kullanici_adi:sifre@sunucu_adi/veritabani_adi?driver=ODBC+Driver+17+for+SQL+Server'
+# Şifre '12345' olarak güncellendi.
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todos.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+
+class Todo(db.Model):
+    _tablename_ = 'todos'
+    id = db.Column(db.Integer, primary_key=True)
+    task = db.Column(db.String(255), nullable=False)
+    completed = db.Column(db.Boolean, nullable=False, default=False)
+
+
+@app.route('/todos', methods=['GET'])
+def get_todos():
+    todos = Todo.query.all()
+    output = [{'id': todo.id, 'task': todo.task, 'completed': todo.completed} for todo in todos]
+    return jsonify({'todos': output})
+
+
 @app.route('/todos', methods=['POST'])
 def add_todo():
     data = request.get_json()
@@ -41,7 +71,7 @@ def add_todo():
     db.session.commit()
 
     return jsonify({
-        'title': new_todo.task,
+        'task': new_todo.task,
         'id': new_todo.id,
         'completed': new_todo.completed
 
@@ -75,7 +105,7 @@ def update_todo(todo_id):
 
     return jsonify({
         'id': todo.id,
-        'title': todo.task,
+        'task': todo.task,
         'completed': todo.completed
     }), 200
 
@@ -84,6 +114,5 @@ with app.app_context():
     db.create_all()
 
 
-if __name__ == '__main__':
+if __name__ == '_main_':
     app.run(debug=True)
-a=6

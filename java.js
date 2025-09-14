@@ -1,4 +1,4 @@
-            const divTodos = document.getElementById("todos");
+const divTodos = document.getElementById("todos");
             const frmTodos = document.getElementById("frmTodos");
             const text = document.getElementById("text");
             const btn = document.getElementById("btn");
@@ -21,7 +21,7 @@
 
                     //yazı satırı
                     let span = document.createElement("span");
-                    span.textContent = todo.title;
+                    span.textContent = todo.task;
                     if(todo.completed) span.classList.add("completed");
                     div.append(span);
 
@@ -36,14 +36,18 @@
                 }
             }
 
-            async function saveData(title){
+            async function saveData(task){
                 let res = await fetch(API_URL, {
                     method: "POST",
                     headers:{"Content-Type":"application/json"},
-                    body: JSON.stringify({task:title})
+                    body: JSON.stringify({task:task})
                 });
                 let newTodo = await res.json();
-                todos.push(newTodo);
+                todos.push({
+                    id: newTodo.id,
+                    task:newTodo.task,
+                    completed: newTodo.completed
+                });
                 listTodos();
 
             }
@@ -63,30 +67,30 @@
             }
 
             async function toggleTodo(todo){
-                await fetch(`${API_URL}/${todo.id}`, {
+                await fetch(${API_URL}/${todo.id}, {
                     method:"PUT",
-                    headers:{ "Content-Type": "application/json" },
-                    body: JSON.stringify({ completed: !todo.completed })
+                        headers:{ "Content-Type": "application/json" },
+                        body: JSON.stringify({ completed: !todo.completed })
                 });
                 todo.completed = !todo.completed;
                 listTodos();
+
             }
 
-
             async function deleteTodo(todo){
-                await fetch(`${API_URL}/${todo.id}`, {method:"DELETE"});
+                await fetch(${API_URL}/${todo.id}, {method:"DELETE"});
                 todos = todos.filter(t => t.id !== todo.id );
                 listTodos();
             }
 
             frmTodos.onsubmit = async function(event){
                 event.preventDefault();
-                let title = text.value.trim();
-                if (!title) return;
-                await saveData(title);
+                let task = text.value.trim();
+                if (!task) return;
+                await saveData(task);
                 listTodos();
                 text.value="";
             };
 
             //load data
-            loadData();
+       loadData();
